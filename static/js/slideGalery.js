@@ -20,7 +20,7 @@ function ActualizarMostrario(acc){
             `
                 <div class="slide padding1">
                     <img class="tamanoImagenSlide borde1" src="../static/images/${arregloLocal[0]}" alt="">
-                    <p class="title">Short title</p>
+                    <p class="title">Short title 1 adelante... </p>
                 </div>   
             `
             for (let e = 1; e < arregloLocal.length; e++) {
@@ -28,7 +28,7 @@ function ActualizarMostrario(acc){
             `
                 <div class="slide esconder padding1">
                     <img class="tamanoImagenSlide borde1" src="../static/images/${arregloLocal[e]}" alt="">
-                    <p class="title">Short title</p>
+                    <p class="title">Short title ${e+2} adelante...</p>
                 </div>   
             `
                 arregloDePaso.push(arregloLocal[e])
@@ -41,7 +41,7 @@ function ActualizarMostrario(acc){
                 `
                     <div class="slide padding1">
                         <img class="tamanoImagenSlide borde1" src="../static/images/${arregloLocal[(arregloLocal.length) - 1]}" alt="">
-                        <p class="title">Short title</p>
+                        <p class="title">Short title 1 atras...</p>
                     </div>   
                 `
                 arregloDePaso.push(arregloLocal[arregloLocal.length - 1])
@@ -50,7 +50,7 @@ function ActualizarMostrario(acc){
                 `
                     <div class="slide esconder padding1">
                         <img class="tamanoImagenSlide borde1" src="../static/images/${arregloLocal[e]}" alt="">
-                        <p class="title">Short title</p>
+                        <p class="title">Short title ${e+2} atras...</p>
                     </div>   
                 `
                     arregloDePaso.push(arregloLocal[e])
