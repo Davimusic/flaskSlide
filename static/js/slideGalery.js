@@ -5,20 +5,19 @@ let inyectar = document.getElementById("padre")
 let arreglo = ["1-1.jpg", "2-2.jpg", "3-3.jpg", "4-4.jpg", "5-5.jpg", "6-6.jpg", "7-7.jpg", "8-8.jpg"]
 
 function ActualizarMostrario(acc){
-    let arregloLocal = [], arregloDePaso = [], codigo = "";
+    let arregloLocal = [], arregloDePaso = [], codigo = "", codigoCirculoSlide = "";
     arregloLocal = arreglo;
+    console.log(screen.width);
+    widthPantalla = screen.width
+
     codigo += 
     `
     <div class="contenedorGaleria ">
-        <div class="flex espacioEquilatero ">
-            <img onclick="ActualizarMostrario('adelante')" src="../static/images/fade.png" alt="" class="botonSlide">
-            <img onclick="ActualizarMostrario('atras')" src="../static/images/fatr.png" alt=""  class="botonSlide">
-        </div>
-
+        
         <div class="flex espacioEquilatero">
     `
         if(widthPantalla <= 650){
-            console.log("entra arriba");
+            console.log("entra arriba width menor a 650");
             if(acc == "adelante"){
                 codigo += 
             `
@@ -40,7 +39,7 @@ function ActualizarMostrario(acc){
             arregloDePaso.push(arregloLocal[0])
             arreglo = arregloDePaso;
             }  else {
-                console.log("entra abajo");
+                console.log("entra abajo width menor a 650");
                 codigo += 
                 `
                     <div class="slide padding1">
@@ -66,8 +65,13 @@ function ActualizarMostrario(acc){
         }
 
         codigo += `
-    </div>    
-        </div> 
+        </div>    
+        <div class="flex espacioEquilatero ">
+            <img onclick="ActualizarMostrario('adelante')" src="../static/images/fade.png" alt="" class="botonSlide">
+            ${codigoCirculoSlide}
+            <img onclick="ActualizarMostrario('atras')" src="../static/images/fatr.png" alt=""  class="botonSlide">
+        </div>
+    </div> 
         `
         console.log(codigo);
         console.log("arreglo " + arreglo);

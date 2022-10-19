@@ -12,12 +12,12 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
 .contenedorGaleria{
   width: 100%;
   height: auto;
-  background: darkcyan;
+  background: #008a8a;
   flex-wrap: wrap;
 }
 
 .padding1{
-  padding: 1%;
+  padding: 2%;
 }
 
 .borde1{
@@ -43,7 +43,7 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
 }
 
 .botonSlide{
-  padding-top: 1%;
+  padding-bottom: 2%;
   padding-left: 2%;
   padding-right: 2%;
   
