@@ -1,11 +1,13 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Poppins', sans-serif !important; }
 
+.relativo{
+  position: relative;
+}
 
-
-.contenedorRelativo{
+.contenedorAbsoluto{
+  top:0%;
   position:absolute;
-  width:95%;
-  height:25%;
+  background: #343b4100;
   z-index: 1;
 }
 
