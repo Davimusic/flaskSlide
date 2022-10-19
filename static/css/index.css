@@ -1,5 +1,7 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Poppins', sans-serif !important; }
 
+
+
 .contenedorRelativo{
   position:absolute;
   width:95%;
@@ -40,23 +42,16 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
   height: 200px !important;
 }
 
-.botonAdelante{
-  position: absolute;
-  top: 30%;
-  left: 7%;
-  width: 50px !important; 
-  height: 50px !important;
+.botonSlide{
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  
+  width: 25px ; 
+  height: 10px ;
   z-index: 100;
 }
 
-.botonAtras{
-  position: absolute;
-  top: 26% !important;;
-  right: 0%;
-  width: 50px !important; 
-  height: 50px !important;
-  z-index: 100;
-}
 
 
 

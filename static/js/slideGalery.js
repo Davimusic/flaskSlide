@@ -9,9 +9,13 @@ function ActualizarMostrario(acc){
     arregloLocal = arreglo;
     codigo += 
     `
-        <div class="contenedorGaleria flex espacioEquilatero">
-            <img onclick="ActualizarMostrario('adelante')" src="../static/images/fade.png" alt="" class="botonAdelante">
-            <img onclick="ActualizarMostrario('atras')" src="../static/images/fatr.png" alt=""  class="botonAtras">
+    <div class="contenedorGaleria ">
+        <div class="flex espacioEquilatero ">
+            <img onclick="ActualizarMostrario('adelante')" src="../static/images/fade.png" alt="" class="botonSlide">
+            <img onclick="ActualizarMostrario('atras')" src="../static/images/fatr.png" alt=""  class="botonSlide">
+        </div>
+
+        <div class="flex espacioEquilatero">
     `
         if(widthPantalla <= 650){
             console.log("entra arriba");
@@ -62,6 +66,7 @@ function ActualizarMostrario(acc){
         }
 
         codigo += `
+    </div>    
         </div> 
         `
         console.log(codigo);
