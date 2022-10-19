@@ -1,11 +1,13 @@
 //NOTA: las figuras siempren deben ser un cuadrado y de la misma medida.
 
 let contenedor =  document.getElementById("contenedor1");
-let alturaPantalla = screen.height;
-let anchoPantalla = screen.width;
-let anchoPantallaDisponible = (anchoPantalla / 100) * 96; // le restamos 4% de los 2% padding
+let alturaPantalla = window.innerHeight; //screen.height;
+let anchoPantalla = window.innerWidth; //screen.width;
+
+let anchoPantallaDisponible = (anchoPantalla / 100) * 95; // le restamos 4% de los 2% padding
 let cod = ""
 
+console.log("alto ventana " + window.innerWidth);
 console.log(" alturaPantalla " + alturaPantalla);
 console.log(" anchoPantalla " + anchoPantalla);
 console.log("incremento " + (alturaPantalla/3.5));
