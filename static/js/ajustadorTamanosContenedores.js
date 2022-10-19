@@ -11,12 +11,20 @@ contenedor.style.height = `${alturaPantalla/3}px`
 contenedor.style.background = "#008a8a"
 
 let pimeraReferencia = alturaPantalla/3.5
+cod += 
+`
+<div class="flex espacioEquilatero">
+`
 for (let i = pimeraReferencia; i < anchoPantallaDisponible && i < (i + pimeraReferencia); i++) {
     cod += `<img style="height: ${alturaPantalla/3.5}px ;" src="../static/images/circuloVacio.png" alt="">`
     i += alturaPantalla/3.5
     //console.log("i " + i);
     //console.log("i antes de entrar a ciclo de nuevo " + (i + pimeraReferencia));
 }
+cod += 
+`
+</div>
+`
 
 //inicio de creacion de div que se sobrepone para usar flechas y botones                                         // doble del pading establecido
 cod += 
@@ -26,14 +34,14 @@ cod +=
             <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px; padding-right: ${((anchoPantalla / 100) * (100 - 4)) - 100}px;" onclick="ActualizarMostrario('adelante')" src="../static/images/adelante.png" alt="" >
             <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px;" onclick="ActualizarMostrario('atras')" src="../static/images/atras.png" alt=""  >
         </div>
-        <div style="padding-top: ${alturaPantalla/(3 * 6)}px; class="flex">
+        <div style="padding-top: ${alturaPantalla/(3 * 4)}px; class="flex">
 `
 //calculo la cantidad de imagenes disponibles
 let arre = ["1-1.jpg", "2-2.jpg"]
     for (let i = 0; i < arre.length; i++) {
         cod += 
                 `
-                <img style="height: 50px; width: 50px;" src="../static/images/circuloVacio.png" alt="" >
+                <img style="height: 20px; width: 20px;" src="../static/images/circuloVacio.png" alt="" >
                 `
     }
 
