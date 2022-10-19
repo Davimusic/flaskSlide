@@ -23,7 +23,7 @@ cod +=
 `                                                                                                         
     <div style="height: ${alturaPantalla/3}px; width: ${(anchoPantalla / 100) * (100 - 4)}px; background: #343b4100; position:absolute; top:4%; z-index: 100;" class="">
         <div class="flex espacioEquilatero ">
-            <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px; padding-right: 85%;" onclick="ActualizarMostrario('adelante')" src="../static/images/adelante.png" alt="" >
+            <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px; padding-right: ${((anchoPantalla / 100) * (100 - 4)) - 100}px;" onclick="ActualizarMostrario('adelante')" src="../static/images/adelante.png" alt="" >
             <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px;" onclick="ActualizarMostrario('atras')" src="../static/images/atras.png" alt=""  >
         </div>
         <div style="padding-top: ${alturaPantalla/(3 * 6)}px; class="flex">
