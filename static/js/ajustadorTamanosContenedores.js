@@ -19,17 +19,32 @@ for (let i = pimeraReferencia; i < anchoPantallaDisponible && i < (i + pimeraRef
 }
 
 //inicio de creacion de div que se sobrepone para usar flechas y botones                                         // doble del pading establecido
-cod += `                                                                                                         
+cod += 
+`                                                                                                         
     <div style="height: ${alturaPantalla/3}px; width: ${(anchoPantalla / 100) * (100 - 4)}px; background: #343b4100; position:absolute; top:4%; z-index: 100;" class="">
         <div class="flex espacioEquilatero ">
-            <img style="padding-top: ${alturaPantalla/(3 * 2)}px; height: 50px; width: 50px; padding-right: 85%;" onclick="ActualizarMostrario('adelante')" src="../static/images/adelante.png" alt="" >
-            <img style="padding-top: ${alturaPantalla/(3 * 2)}px; height: 50px; width: 50px;" onclick="ActualizarMostrario('atras')" src="../static/images/atras.png" alt=""  >
+            <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px; padding-right: 85%;" onclick="ActualizarMostrario('adelante')" src="../static/images/adelante.png" alt="" >
+            <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px;" onclick="ActualizarMostrario('atras')" src="../static/images/atras.png" alt=""  >
         </div>
+        <div style="padding-top: ${alturaPantalla/(3 * 6)}px; class="flex">
+`
+//calculo la cantidad de imagenes disponibles
+let arre = ["1-1.jpg", "2-2.jpg"]
+    for (let i = 0; i < arre.length; i++) {
+        cod += 
+                `
+                <img style="height: 50px; width: 50px;" src="../static/images/circuloVacio.png" alt="" >
+                `
+    }
+
+cod +=
+`        
+        </div>    
     </div>
 
 `
 
-
+console.log(cod);
 contenedor.innerHTML = cod;
 
 

@@ -73,8 +73,8 @@ function ActualizarMostrario(acc){
         </div>
     </div> 
         `
-        console.log(codigo);
-        console.log("arreglo " + arreglo);
+        //console.log(codigo);
+        //console.log("arreglo " + arreglo);
         inyectar.innerHTML = codigo
 }
 
