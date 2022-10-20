@@ -68,7 +68,7 @@ function ActualizarMostrario2(acc){
                 <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px; padding-right: ${((anchoPantalla / 100) * (100 - 4)) - 100}px;" onclick="ActualizarMostrario2('adelante')" src="../static/images/adelante.png" alt="" >
                 <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px;" onclick="ActualizarMostrario2('atras')" src="../static/images/atras.png" alt=""  >
             </div>
-            <div style="padding-top: ${((alturaPantalla / 3) / 100)*40}px; class="flex">
+            <div style="padding-top: ${((alturaPantalla / 3) / 100)*30}px;" class="flex">
     `
     //calculo la cantidad de imagenes disponibles
 
