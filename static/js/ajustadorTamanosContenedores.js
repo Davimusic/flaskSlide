@@ -1,6 +1,6 @@
 //NOTA: las figuras siempren deben ser un cuadrado y de la misma medida.
 
-let arre = ["1-1.jpg", "2-2.jpg", "3-3.jpg", "4-4.jpg", "5-5.jpg", "6-6.jpg", "7-7.jpg", "8-8.jpg"]
+let arre = [["1-1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1"], ["2-2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1"], ["3-3.jpg", "texto3"], ["4-4.jpg", "texto4"], ["5-5.jpg", "texto5"], ["6-6.jpg", "texto6"], ["7-7.jpg", "texto7"], ["8-8.jpg", "texto8"]]
 
 let contenedor =  document.getElementById("contenedor1");
 let alturaPantalla = window.innerHeight; //screen.height;
@@ -20,24 +20,75 @@ function ActualizarMostrario2(acc){
     let puntero = 0
     let arrePaso = []
 
+    //inicio de creacion de div que se sobrepone para usar flechas y botones                                         // doble del pading establecido
     cod += 
     `
-    <div class="flex espacioEquilatero">
+    <div style="background: #00000000" class="borde1">                                                                                                       
+        
     `
 
-    for (let i = primeraReferencia; i < anchoPantallaDisponible && i < (i + primeraReferencia); i++) {
-        puntero += 1
-        i += alturaPantalla/3.5
-    }
+    cod += 
+        `
+        <div class="flex espacioEquilatero">
+        `
+
+        for (let i = primeraReferencia; i < anchoPantallaDisponible && i < (i + primeraReferencia); i++) {
+            puntero += 1
+            i += alturaPantalla/3.5
+        }
+
+        for (let i = 0; i < arre.length; i++) {
+            if(i < puntero ){
+                cod += `
+                        <div class="slide">
+                            <img id="imgSlide${i}" onmouseout="decrecer('imgSlide${i}', '${alturaPantalla/3.5}')" onmouseover="crecer('imgSlide${i}', '${alturaPantalla/3.5}')" class="borde1" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
+                            <div class="borde1" style = "background: #36797980;">${arre[i][1]} </div>
+                        </div>
+                ` 
+            } else{
+                cod += `
+                        <div class="slide esconder">
+                            <img class="borde1" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
+                            <div>${arre[i][1]} </div>
+                        </div>
+                ` 
+            }
+        }
+        cod += 
+        `
+        </div>  
+    `   
+        cod += 
+        `
+        <div>
+            <div class="flex espacioEquilatero paddingSuperiorInferior contenedorGaleria">
+                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="ActualizarMostrario2('adelante')" src="../static/images/adelante.png" alt="" >
+                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="ActualizarMostrario2('atras')" src="../static/images/atras.png" alt=""  >
+            
+    `
+    //calculo la cantidad de imagenes disponibles
 
     for (let i = 0; i < arre.length; i++) {
-        if(i < puntero ){
-            cod += `<img class="borde1 slide" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i]}" alt="">` 
-        } else{
-            cod += `<img class="borde1 slide esconder" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i]}" alt="">` 
-        }
+        cod += 
+                `
+                <img style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/circuloVacio.png" alt="" >
+                `
     }
 
+    cod +=
+        `        
+            </div>    
+        </div>
+        `
+
+        cod += 
+        `
+    </div>  
+    `
+
+    contenedor.innerHTML = cod;
+
+    //Actualizar arreglo
     let pasos = 0
     while(pasos < arre.length){
         if(puntero < arre.length){
@@ -52,42 +103,6 @@ function ActualizarMostrario2(acc){
 
     arre = arrePaso
     console.log(arre);
-
-    
-
-    cod += 
-    `
-    </div>
-    `
-
-    //inicio de creacion de div que se sobrepone para usar flechas y botones                                         // doble del pading establecido
-    cod += 
-    `                                                                                                         
-        <div style="height: ${alturaPantalla/3}px; width: ${(anchoPantalla / 100) * (100 - 4)}px; background: #343b4100; position:absolute; top:4%; z-index: 100;" class="">
-            <div class="flex espacioEquilatero ">
-                <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px; padding-right: ${((anchoPantalla / 100) * (100 - 4)) - 100}px;" onclick="ActualizarMostrario2('adelante')" src="../static/images/adelante.png" alt="" >
-                <img style="padding-top: ${alturaPantalla/(3 * 3)}px; height: 50px; width: 50px;" onclick="ActualizarMostrario2('atras')" src="../static/images/atras.png" alt=""  >
-            </div>
-            <div style="padding-top: ${((alturaPantalla / 3) / 100)*30}px;" class="flex">
-    `
-    //calculo la cantidad de imagenes disponibles
-
-        for (let i = 0; i < arre.length; i++) {
-            cod += 
-                    `
-                    <img style="height: 20px; width: 20px;" src="../static/images/circuloVacio.png" alt="" >
-                    `
-        }
-
-    cod +=
-    `        
-            </div>    
-        </div>
-
-    `
-
-    //console.log(cod);
-    contenedor.innerHTML = cod;
 }
 
 

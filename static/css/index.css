@@ -1,5 +1,19 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Poppins', sans-serif !important; }
 
+body{
+  background: #008a8a;
+}
+
+
+.paddingSuperiorInferior{
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.paddingTop{
+  padding-top: 10%;
+}
+
 .relativo{
   position: relative;
 }
@@ -17,6 +31,8 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
   background: #008a8a;
   flex-wrap: wrap;
 }
+
+
 
 .padding1{
   padding: 2%;
@@ -70,6 +86,11 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
   from { opacity: 0; }
   to {opacity: 1; }
 }
+
+
+
+
+
 
 
 
