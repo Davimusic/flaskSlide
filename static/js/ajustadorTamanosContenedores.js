@@ -170,6 +170,12 @@ function pelota(ref, acc){
     ActualizarMostrario2()     
 }
 
+window.onpageshow = function(event){
+    if(event.persisted){
+        window.location.reload();
+        alert("fuè")
+    }
+}
 
 
 
