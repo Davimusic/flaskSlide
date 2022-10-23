@@ -1,6 +1,6 @@
 //NOTA: las figuras siempren deben ser un cuadrado y de la misma medida.
 
-let arre = [["1-1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1", "0"], ["2-2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1", "1"], ["3-3.jpg", "texto3", "2"], ["4-4.jpg", "texto4", "3"], ["5-5.jpg", "texto5", "4"], ["6-6.jpg", "texto6", "5"], ["7-7.jpg", "texto7", "6"], ["8-8.jpg", "texto8", "7"]]
+let arre = [["1-1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1", "0"], ["2-2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1", "1"], ["3-3.jpg", "texto3 <br> texto1 <br> texto1 <br> texto1", "2"], ["4-4.jpg", "texto4 <br> texto1 <br> texto1 <br> texto1", "3"], ["5-5.jpg", "texto5 <br> texto1 <br> texto1 <br> texto1", "4"], ["6-6.jpg", "texto6 <br> texto1 <br> texto1 <br> texto1", "5"], ["7-7.jpg", "texto7 <br> texto1 <br> texto1 <br> texto1", "6"], ["8-8.jpg", "texto8 <br> texto1 <br> texto1 <br> texto1", "7"]]
 
 let contenedor =  document.getElementById("contenedor1");
 let alturaPantalla = window.innerHeight; //screen.height;
@@ -67,8 +67,8 @@ function ActualizarMostrario2(){
         `
         <div>
             <div class="flex espacioEquilatero paddingSuperiorInferior contenedorGaleria">
-                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="ActualizarMostrario2('adelante')" src="../static/images/adelante.png" alt="" >
-                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="ActualizarMostrario2('atras')" src="../static/images/atras.png" alt=""  >
+                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('1','flecha')" src="../static/images/adelante.png" alt="" >
+                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('-1', 'flecha')" src="../static/images/atras.png" alt=""  >
             
     `
     //calculo la cantidad de imagenes disponibles
@@ -82,7 +82,7 @@ function ActualizarMostrario2(){
         }
         cod += 
                 `
-                <img onclick="pelota(${i})" style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/${decision}" alt="" >
+                <img onclick="pelota(${i}, 'pelota')" style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/${decision}" alt="" >
                 `
     }
 
@@ -116,16 +116,41 @@ function ActualizarMostrario2(){
     //console.log(arre);
 }
 
+let idActual = 0
+function pelota(ref, acc){
 
-function pelota(id){
+    if(acc == "pelota"){
+        idActual = ref
+    } else if(acc == "flecha"){
+        if(ref == -1){
+            //console.log("arriba");
+            //console.log((idActual + parseInt(ref)) <= -1);
+            if((idActual + parseInt(ref)) <= -1){
+                idActual = (arre.length - 1)
+            } else {
+                idActual -= 1
+            }
+        } else {
+            //console.log("abajo");
+            //console.log((idActual + parseInt(ref)) <= (arre.length - 1));
+            if((idActual + parseInt(ref)) <= (arre.length - 1)){
+                idActual += 1
+            } else {
+                idActual = 0
+            }
+        }
+        //console.log("entra");
+    }
+
+    //console.log("idActual " + idActual);
+
     let empezar = "no"
     let conteo  = 0;
     let arrePaso = []
+
     for(let i = 0; i < arre.length; i++) {
-        if(id == arre[i][2]){
+        if(idActual == arre[i][2]){
             empezar = "si"
-            console.log("empieza " + id);
-            console.log("i " + i);
         }
         if(empezar == "si"){
             arrePaso.push(arre[i])
@@ -137,12 +162,12 @@ function pelota(id){
         arrePaso.push(arre[i])
     }
 
+    /*console.log("idActual " + idActual);
+    console.log("largo arreglo ");
+    console.log(arre.length);*/
+
     arre = arrePaso;
-    ActualizarMostrario2()
-    console.log(arrePaso);
-    
-
-
+    ActualizarMostrario2()     
 }
 
 
