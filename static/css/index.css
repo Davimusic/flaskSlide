@@ -1,9 +1,10 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Poppins', sans-serif !important; }
 
-body{
-  background: #ffffff;
-}
 
+
+.gradiente{
+  background-image: linear-gradient(#2b2828, rgb(255, 255, 255));
+}
 
 
 .sombra{

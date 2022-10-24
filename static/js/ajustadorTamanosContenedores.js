@@ -14,8 +14,9 @@ let primeraReferencia = alturaPantalla/3.5
 
 function ActualizarMostrario2(){
 
-    contenedor.style.height = `${alturaPantalla/3}px`
-    contenedor.style.background = "#2b2828"
+    //contenedor.style.height = `${alturaPantalla/3}px`
+    //contenedor.style.background = "#2b2828"
+    
     let cod = ""
     let puntero = 0; 
     let arrePaso = []
@@ -26,7 +27,7 @@ function ActualizarMostrario2(){
     //inicio de creacion de div que se sobrepone para usar flechas y botones                                         // doble del pading establecido
     cod += 
     `
-    <div style="background: #008a8a" class="sombra padding1">                                                                                                       
+    <div style="background: #008a8a" class="sombra padding1 gradiante">                                                                                                       
         
     `
 
