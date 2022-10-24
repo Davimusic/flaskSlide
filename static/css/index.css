@@ -5,6 +5,12 @@ body{
 }
 
 
+
+.sombra{
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.44); 
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.44);
+}
+
 .paddingSuperiorInferior{
   padding-top: 2%;
   padding-bottom: 2%;
@@ -39,7 +45,11 @@ body{
 }
 
 .borde1{
-  border-radius: 0.5em;
+  border-radius:50%;
+}
+
+.borde2{
+  border-radius: 5%;
 }
 
 .espacioEquilatero{

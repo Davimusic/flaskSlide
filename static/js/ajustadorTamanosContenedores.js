@@ -1,6 +1,6 @@
 //NOTA: las figuras siempren deben ser un cuadrado y de la misma medida.
 
-let arre = [["1-1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1", "0"], ["2-2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1", "1"], ["3-3.jpg", "texto3 <br> texto1 <br> texto1 <br> texto1", "2"], ["4-4.jpg", "texto4 <br> texto1 <br> texto1 <br> texto1", "3"], ["5-5.jpg", "texto5 <br> texto1 <br> texto1 <br> texto1", "4"], ["6-6.jpg", "texto6 <br> texto1 <br> texto1 <br> texto1", "5"], ["7-7.jpg", "texto7 <br> texto1 <br> texto1 <br> texto1", "6"], ["8-8.jpg", "texto8 <br> texto1 <br> texto1 <br> texto1", "7"]]
+let arre = [["1-1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1", "0"], ["2-2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1", "1"], ["3-3.jpg", "texto3 <br> texto1 <br> texto1 <br> texto1", "2"], ["4-4.jpg", "texto4 <br> texto1 <br> texto1 <br> texto1", "3"], ["5-5.jpg", "texto5 <br> texto1 <br> texto1 <br> texto1", "4"], ["6-6.jpg", "texto6 <br> texto1 <br> texto1 <br> texto1", "5"], ["7-7.jpg", "texto7 <br> texto1 <br> texto1 <br> texto1", "6"], ["8-8.jpg", "texto8 <br> texto1 <br> texto1 <br> texto1", "7"], ["n1.jpg", "texto9 <br> texto1 <br> texto1 <br> texto1", "8"], ["n2.jpg", "texto10 <br> texto1 <br> texto1 <br> texto1", "9"], ["n3.jpg", "texto11 <br> texto1 <br> texto1 <br> texto1", "10"], ["n4.jpg", "texto12 <br> texto1 <br> texto1 <br> texto1", "11"]]
 
 let contenedor =  document.getElementById("contenedor1");
 let alturaPantalla = window.innerHeight; //screen.height;
@@ -15,7 +15,7 @@ let primeraReferencia = alturaPantalla/3.5
 function ActualizarMostrario2(){
 
     contenedor.style.height = `${alturaPantalla/3}px`
-    contenedor.style.background = "#008a8a"
+    contenedor.style.background = "#008a8a3b"
     let cod = ""
     let puntero = 0; 
     let arrePaso = []
@@ -47,7 +47,7 @@ function ActualizarMostrario2(){
                 cod += `
                         <div class="slide">
                             <img id="imgSlide${i}" onmouseout="decrecer('imgSlide${i}', '${alturaPantalla/3.5}')" onmouseover="crecer('imgSlide${i}', '${alturaPantalla/3.5}')" class="borde1" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
-                            <div class="borde1" style = "background: #36797980;">${arre[i][1]} </div>
+                            <div class="" style = "background: ;">${arre[i][1]} </div>
                         </div>
                 ` 
             } else{
