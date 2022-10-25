@@ -16,6 +16,7 @@ function ActualizarMostrario2(){
 
     //contenedor.style.height = `${alturaPantalla/3}px`
     //contenedor.style.background = "#2b2828"
+    contenedor.style.background = 'linear-gradient(to bottom, #2b2828 0%, #2b2828 80%, white 80%, white 100%)'
     
     let cod = ""
     let puntero = 0; 
@@ -27,7 +28,7 @@ function ActualizarMostrario2(){
     //inicio de creacion de div que se sobrepone para usar flechas y botones                                         // doble del pading establecido
     cod += 
     `
-    <div style="background: #008a8a" class="sombra padding1 gradiante">                                                                                                       
+    <div style="background: #008a8a" class="contenedor1 relativo gradiente sombra padding1 gradiante">                                                                                                       
         
     `
 
