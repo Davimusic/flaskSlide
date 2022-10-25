@@ -48,14 +48,14 @@ function ActualizarMostrario2(){
             if(i < puntero ){
                 cod += `
                         <div class="slide">
-                            <img id="imgSlide${i}" onmouseout="decrecer('imgSlide${i}', '${alturaPantalla/3.5}')" onmouseover="crecer('imgSlide${i}', '${alturaPantalla/3.5}')" class="borde1" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
+                            <img id="imgSlide${i}" onmouseout="decrecer('imgSlide${i}', '${alturaPantalla/3.5}')" onmouseover="crecer('imgSlide${i}', '${alturaPantalla/3.5}')" class="borde1 mano" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
                             <div class="" style = "background: ;">${arre[i][1]} </div>
                         </div>
                 ` 
             } else{
                 cod += `
                         <div class="slide esconder">
-                            <img class="borde1" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
+                            <img class="borde1 mano" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
                             <div>${arre[i][1]} </div>
                         </div>
                 ` 
@@ -69,8 +69,8 @@ function ActualizarMostrario2(){
         `
         <div>
             <div class="flex espacioEquilatero paddingSuperiorInferior contenedorGaleria">
-                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('1','flecha')" src="../static/images/adelante.png" alt="" >
-                <img style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('-1', 'flecha')" src="../static/images/atras.png" alt=""  >
+                <img class='mano' style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('1','flecha')" src="../static/images/adelante.png" alt="" >
+                <img class='mano' style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('-1', 'flecha')" src="../static/images/atras.png" alt=""  >
             
     `
     //calculo la cantidad de imagenes disponibles
@@ -84,7 +84,7 @@ function ActualizarMostrario2(){
         }
         cod += 
                 `
-                <img onclick="pelota(${i}, 'pelota')" style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/${decision}" alt="" >
+                <img class='mano' onclick="pelota(${i}, 'pelota')" style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/${decision}" alt="" >
                 `
     }
 
@@ -115,7 +115,6 @@ function ActualizarMostrario2(){
     }
 
     arre = arrePaso
-    //console.log(cod);
 }
 
 let idActual = 0
@@ -125,26 +124,19 @@ function pelota(ref, acc){
         idActual = ref
     } else if(acc == "flecha"){
         if(ref == -1){
-            //console.log("arriba");
-            //console.log((idActual + parseInt(ref)) <= -1);
             if((idActual + parseInt(ref)) <= -1){
                 idActual = (arre.length - 1)
             } else {
                 idActual -= 1
             }
         } else {
-            //console.log("abajo");
-            //console.log((idActual + parseInt(ref)) <= (arre.length - 1));
             if((idActual + parseInt(ref)) <= (arre.length - 1)){
                 idActual += 1
             } else {
                 idActual = 0
             }
         }
-        //console.log("entra");
     }
-
-    //console.log("idActual " + idActual);
 
     let empezar = "no"
     let conteo  = 0;
@@ -164,15 +156,12 @@ function pelota(ref, acc){
         arrePaso.push(arre[i])
     }
 
-    /*console.log("idActual " + idActual);
-    console.log("largo arreglo ");
-    console.log(arre.length);*/
-
     arre = arrePaso;
     ActualizarMostrario2()     
 }
 
 window.onpageshow = function(event){
+    //parece no servir, no se està usando
     if(event.persisted){
         window.location.reload();
         alert("fuè")
@@ -181,35 +170,3 @@ window.onpageshow = function(event){
 
 
 
-/**
- * console.log(arre);
-    
-    let arrePaso = []
-    for (let i = 0; i < arre.length; i++) {
-        if(arre[i][2]  == id){
-            empezar = "si"
-            console.log(id);
-            console.log("empieza desde el " + i);
-        }
-
-        if(empezar == "si"){
-            arrePaso.push(arre[i])
-            conteo += 1
-        }
-    }
-
-    //console.log(arrePaso);
-    
-
-    if(conteo >= (arre.length - 1)){
-        console.log("acaba ciclo");
-        empezar = "no"
-        console.log(arrePaso);
-        //ActualizarMostrario2()
-        //console.log(arre);
-    } else {
-        console.log("entra pelota");
-        console.log("conteo " + conteo + " arre.length - 1 " + (arre.length - 1));
-        pelota(id)
-    }
- */
