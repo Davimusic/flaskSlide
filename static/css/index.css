@@ -4,6 +4,16 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
   cursor:pointer;
 }
 
+.posicionAbsoluta{
+  position: absolute;
+}
+
+.sticky{
+  position: -webkit-sticky;  /*/ required for Safari*/
+  position: sticky;
+  top: 0; /*/ required as well.*/
+}
+
 .none{
   display: none;
 }

@@ -6,19 +6,21 @@ function menu(){
     let alturaPantalla = window.innerHeight; 
     let anchoPantalla = window.innerWidth; 
     let cod = "", display = "", anchoAUsar = "", clasEsconder = "", eventoMenuCelular = "";
+    let alturaMenu = 30, copiaAlaturaMenu = 0;
 
     if(anchoPantalla <= 640){
         display = "block"
-        anchoAUsar = `style= "height: 50px;"`
+        anchoAUsar = `style= "height: 0px;"`
         clasEsconder = "none"
         eventoMenuCelular = 'onclick="menuCelular()"'
     } else {
         display = "flex"
+        copiaAlaturaMenu = alturaMenu;
     }
     
     cod += 
     `
-    <div id="menuDesplegable" class="color1 contenedorGaleria" ${anchoAUsar}>
+    <div id="menuDesplegable" class="color1 contenedorGaleria posicionAbsoluta sticky" ${anchoAUsar}>
         <ul class="${display} espacioEquilatero ListaLimpia">
     `
         for (let i = 0; i < arr.length; i++) {
@@ -28,7 +30,7 @@ function menu(){
                 `
             } else {
                 cod +=`    
-                <li class=''><img ${eventoMenuCelular} style="height: 30px;" src="${arr[i][1]}" alt="" ></li>
+                <li class=''><img ${eventoMenuCelular} style="height: ${alturaMenu - 5}px;" src="${arr[i][1]}" alt="" ></li>
                 `
             }
         }
@@ -40,7 +42,16 @@ function menu(){
     menuID.innerHTML = cod;
 }
 
+let bandera = 0
 function menuCelular(){
-    //let menu = document.getElementById()
-    alert("FF")
+    let menu = document.getElementById("menuDesplegable")
+    menu.style.transition = "0.5s";
+    if(bandera  == 0 ){
+        bandera = 1
+        menu.style.height = `${alturaPantalla}px`
+    } else {
+        bandera = 0
+        menu.style.height = `0px` //sacado de la altura que queda al renderizar en modo Movil
+    }
+    //alert("FF")
 }
