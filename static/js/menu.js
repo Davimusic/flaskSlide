@@ -20,7 +20,7 @@ function menu(){
     
     cod += 
     `
-    <div id="menuDesplegable" class="color1 contenedorGaleria posicionAbsoluta sticky" ${anchoAUsar}>
+    <div id="menuDesplegable" class="color1 contenedorGaleria" ${anchoAUsar}>
         <ul class="${display} espacioEquilatero ListaLimpia">
     `
         for (let i = 0; i < arr.length; i++) {

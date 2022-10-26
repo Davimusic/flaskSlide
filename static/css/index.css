@@ -8,6 +8,10 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
   position: absolute;
 }
 
+.posicionRelativa{
+  position: relative;
+}
+
 .sticky{
   position: -webkit-sticky;  /*/ required for Safari*/
   position: sticky;
@@ -39,7 +43,6 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
 .contenedorGaleria{
   width: 100%;
   height: auto;
-  /*background: #008a8a;*/
   flex-wrap: wrap;
 }
 
