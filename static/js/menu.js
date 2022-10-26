@@ -48,7 +48,7 @@ function menuCelular(){
     menu.style.transition = "0.5s";
     if(bandera  == 0 ){
         bandera = 1
-        menu.style.height = `${(alturaPantalla / 100) * 115}px`
+        menu.style.height = `${alturaPantalla}px`
     } else {
         bandera = 0
         menu.style.height = `0px` //sacado de la altura que queda al renderizar en modo Movil
