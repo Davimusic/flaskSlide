@@ -3,10 +3,9 @@ let arr = [['imagen', 'https://res.cloudinary.com/dplncudbq/image/upload/v165801
 
 function menu(){
 
-    let alturaPantalla = window.innerHeight; 
     let anchoPantalla = window.innerWidth; 
     let cod = "", display = "", anchoAUsar = "", clasEsconder = "", eventoMenuCelular = "";
-    let alturaMenu = 30, copiaAlaturaMenu = 0;
+    let alturaMenu = 30;
 
     if(anchoPantalla <= 640){
         display = "block"
@@ -15,7 +14,6 @@ function menu(){
         eventoMenuCelular = 'onclick="menuCelular()"'
     } else {
         display = "flex"
-        copiaAlaturaMenu = alturaMenu;
     }
     
     cod += 
@@ -26,7 +24,7 @@ function menu(){
         for (let i = 0; i < arr.length; i++) {
             if(arr[i][0] != 'imagen'){
                 cod +=`    
-                <li class='${clasEsconder}'><a class='ListaLimpia' href="${arr[i][0]}">${arr[i][1]}</a></li>
+                <li class='${clasEsconder} textoMenu'><a class='ListaLimpia' href="${arr[i][0]}">${arr[i][1]}</a></li>
                 `
             } else {
                 cod +=`    
@@ -49,9 +47,21 @@ function menuCelular(){
     if(bandera  == 0 ){
         bandera = 1
         menu.style.height = `${alturaPantalla}px`
+        setTimeout(mostrarTextoMenu, 1000);
     } else {
         bandera = 0
         menu.style.height = `0px` //sacado de la altura que queda al renderizar en modo Movil
+        mostrarTextoMenu("cerrar")
     }
-    //alert("FF")
+}
+
+function mostrarTextoMenu(acc){
+    let arreglo = document.getElementsByClassName("textoMenu"); //arrojada por la variable clasEsconder
+    for (let i = 0; i < arreglo.length; i++) {
+        if(acc == "cerrar"){
+            arreglo[i].classList.replace("flex", "none")
+        } else {
+            arreglo[i].classList.replace("none", "flex")
+        }
+    }
 }
