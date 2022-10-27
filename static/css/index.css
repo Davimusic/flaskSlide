@@ -1,5 +1,9 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Playfair Display', serif !important; }
 
+.fondoTransparente{
+  background: #00000065;
+}
+
 .rangeLimpio {
   width: 80%;
   height: 10px;

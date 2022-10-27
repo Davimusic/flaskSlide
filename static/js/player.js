@@ -8,13 +8,13 @@ function usarReproductorAudio(){
     let cod = "";
 
     cod += `
-    <div  class="padding1" style="background:#2b2828">
-        <div class="padding1">
+    <div  class="padding1" >
+        <div class="padding1 color1">
     `
 
     for (let i = 0; i < arreAudios.length; i++) {
             cod += `
-            <div class="flex" onclick="seleccionarAudio('miAudio${i}')">
+            <div id="div_miAudio${i}" class="flex" onclick="seleccionarAudio('miAudio${i}')">
                 <div>
                     <img style="width:50px" src="${arreAudios[i][1]}" alt="seo">
                 </div>
@@ -38,7 +38,7 @@ function usarReproductorAudio(){
             <img style="width:50px" onclick="playAudio()" src="../static/images/play.png" alt="seo">
             <img style="width:50px" onclick="pauseAudio()" src="../static/images/pause.png" alt="seo">
             <img style="width:50px" onclick="stopAudio()" src="../static/images/stop.png" alt="seo">
-            <input class="rangeLimpio color1" type="range" onchange="actualizarUbicacionAudio(this.value)" id="barraDeReproductorAudio" value="0" max=""/>
+            <input class="rangeLimpio fondoTransparente" type="range" onchange="actualizarUbicacionAudio(this.value)" id="barraDeReproductorAudio" value="0" max=""/>
         </div>
     </div>
     `
@@ -49,14 +49,22 @@ function usarReproductorAudio(){
 }
 
 function seleccionarAudio(id){
+
     if(punteroAudio != undefined){
         stopAudio()
     }
+
     punteroAudio = document.getElementById(id); 
+    
+    let buscar = "";
+    for (let i = 0; i < arreAudios.length; i++) {
+        buscar = `div_miAudio${i}`
+        document.getElementById(buscar).classList.remove("fondoTransparente")
+    }
+    buscar = `div_${id}`
+    document.getElementById(buscar).classList.add("fondoTransparente")
+
     punteroBarraDeAudio =  document.getElementById("barraDeReproductorAudio")
-
-    console.log("duracion audio " + punteroAudio.duration);
-
     punteroBarraDeAudio.value = 0;
     punteroBarraDeAudio.max = punteroAudio.duration;
     
