@@ -47,7 +47,7 @@ function menuCelular(){
     if(bandera  == 0 ){
         bandera = 1
         menu.style.height = `${alturaPantalla}px`
-        setTimeout(mostrarTextoMenu, 1000);
+        setTimeout(mostrarTextoMenu, 600);
     } else {
         bandera = 0
         menu.style.height = `0px` //sacado de la altura que queda al renderizar en modo Movil
@@ -58,7 +58,7 @@ function menuCelular(){
 function mostrarTextoMenu(acc){
     let arreglo = document.getElementsByClassName("textoMenu"); //arrojada por la variable clasEsconder
     for (let i = 0; i < arreglo.length; i++) {
-        if(acc == "cerrar"){
+        if(acc == "cerrar"  || bandera == 0){
             arreglo[i].classList.replace("flex", "none")
         } else {
             arreglo[i].classList.replace("none", "flex")
