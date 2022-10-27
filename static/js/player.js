@@ -38,7 +38,7 @@ function usarReproductorAudio(){
             <img style="width:50px" onclick="playAudio()" src="../static/images/play.png" alt="seo">
             <img style="width:50px" onclick="pauseAudio()" src="../static/images/pause.png" alt="seo">
             <img style="width:50px" onclick="stopAudio()" src="../static/images/stop.png" alt="seo">
-            <input type="range" onchange="actualizarUbicacionAudio(this.value)" id="barraDeReproductorAudio" value="0" max=""/>
+            <input class="rangeLimpio color1" type="range" onchange="actualizarUbicacionAudio(this.value)" id="barraDeReproductorAudio" value="0" max=""/>
         </div>
     </div>
     `

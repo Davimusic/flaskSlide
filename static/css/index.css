@@ -1,5 +1,34 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Playfair Display', serif !important; }
 
+.rangeLimpio {
+  width: 80%;
+  height: 10px;
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.rangeLimpio::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #2b2828;
+  cursor: pointer;
+}
+
+.rangeLimpio::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #2b2828;
+  cursor: pointer;
+}
+
+
+
 
 .mano{
   cursor:pointer;
