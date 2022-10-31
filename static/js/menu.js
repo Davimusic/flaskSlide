@@ -1,7 +1,7 @@
-let menuID = document.getElementById("menu");
 let arr = [['imagen', 'https://res.cloudinary.com/dplncudbq/image/upload/v1658015902/mias/i1_ndc8ga.png'],['#home', 'Home'],['#home2', 'Home2'], ['#home3', 'Home3'], ['#home4', 'Home4'], ['#home', 'Home'],['#home2', 'Home2'],['', '']]
 
 function menu(){
+    let menuID = document.getElementById("menu");
 
     let anchoPantalla = window.innerWidth; 
     let cod = "", display = "", anchoAUsar = "", clasEsconder = "", eventoMenuCelular = "";

@@ -4,12 +4,14 @@ let arreAudios =   [['https://res.cloudinary.com/dplncudbq/video/upload/v1658158
                     ['https://res.cloudinary.com/dplncudbq/video/upload/v1657579441/mias/m1_s2epfa.mp3','https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png', 'titulo2', 'chachara2.....'],
                     ['https://res.cloudinary.com/dplncudbq/video/upload/v1657299118/mias/m2_koysag.mp3','https://res.cloudinary.com/dplncudbq/image/upload/v1657297550/mias/logoGenerico_dotmc8.png', 'titulo3', 'chachara3.....']    ] 
 
+
 function usarReproductorAudio(){
+    let audioPlayer = document.getElementById("audioPlayer")
     let cod = "";
 
     cod += `
     <div  class="padding1" >
-        <div class="padding1 color1">
+        <div class="padding1 color1 sombra">
     `
 
     for (let i = 0; i < arreAudios.length; i++) {
@@ -43,8 +45,6 @@ function usarReproductorAudio(){
     </div>
     `
 
-    let audioPlayer = document.getElementById("audioPlayer")
-    //console.log(cod);
     audioPlayer.innerHTML = cod;
 }
 
@@ -99,12 +99,10 @@ function stopAudio() {
 
 function actualizarUbicacionAudio(acc){
     punteroAudio.currentTime = acc;
-    console.log(acc);
 }
 
 function cronometro(){
     if(audioEnUso == true){
-        //console.log("inicio crono " + (parseInt(punteroBarraDeAudio.value) + 1));
         punteroBarraDeAudio.value = parseInt(punteroBarraDeAudio.value) + 1
         setTimeout(cronometro, 1000)
     }
