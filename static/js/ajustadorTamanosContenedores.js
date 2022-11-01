@@ -3,7 +3,6 @@
 let arrePadre = [[["1-1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1", "0"], ["2-2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1", "1"], ["3-3.jpg", "texto3 <br> texto1 <br> texto1 <br> texto1", "2"], ["4-4.jpg", "texto4 <br> texto1 <br> texto1 <br> texto1", "3"], ["5-5.jpg", "texto5 <br> texto1 <br> texto1 <br> texto1", "4"], ["6-6.jpg", "texto6 <br> texto1 <br> texto1 <br> texto1", "5"], ["7-7.jpg", "texto7 <br> texto1 <br> texto1 <br> texto1", "6"], ["8-8.jpg", "texto8 <br> texto1 <br> texto1 <br> texto1", "7"], ["n1.jpg", "texto9 <br> texto1 <br> texto1 <br> texto1", "8"], ["n2.jpg", "texto10 <br> texto1 <br> texto1 <br> texto1", "9"], ["n3.jpg", "texto11 <br> texto1 <br> texto1 <br> texto1", "10"], ["n4.jpg", "texto12 <br> texto1 <br> texto1 <br> texto1", "11"]], [["c1.jpg", "texto1 <br> texto1 <br> texto1 <br> texto1", "0"], ["c2.jpg", "texto2 <br> texto1 <br> texto1 <br> texto1", "1"], ["c3.jpg", "texto3 <br> texto1 <br> texto1 <br> texto1", "2"], ["c4.jpg", "texto4 <br> texto1 <br> texto1 <br> texto1", "3"], ["c5.jpg", "texto5 <br> texto1 <br> texto1 <br> texto1", "4"], ["c6.jpg", "texto6 <br> texto1 <br> texto1 <br> texto1", "5"], ["c7.jpg", "texto7 <br> texto1 <br> texto1 <br> texto1", "6"], ["c8.jpg", "texto8 <br> texto1 <br> texto1 <br> texto1", "7"], ["n1.jpg", "texto9 <br> texto1 <br> texto1 <br> texto1", "8"], ["n2.jpg", "texto10 <br> texto1 <br> texto1 <br> texto1", "9"], ["n3.jpg", "texto11 <br> texto1 <br> texto1 <br> texto1", "10"], ["n4.jpg", "texto12 <br> texto1 <br> texto1 <br> texto1", "11"]]] 
 
 let arre = []
-let arreCodigoSecciones = []
 let IdSeccion = 0;
 
 let alturaPantalla = window.innerHeight; //screen.height;
@@ -14,13 +13,11 @@ let primeraReferencia = alturaPantalla/3.5
 function ActualizarMostrario2(idSeccion){
     IdSeccion = parseInt(idSeccion);
     arre = arrePadre[IdSeccion]
-    console.log("arriba");
-    console.log(arrePadre[IdSeccion])
     let contenedor =  document.getElementById(`contenedor${IdSeccion}`);
 
     //contenedor.style.height = `${alturaPantalla/3}px`
     //contenedor.style.background = "#2b2828"
-    contenedor.style.background = 'linear-gradient(to bottom, #2b2828 0%, #2b2828 80%, white 80%, white 100%)'
+    contenedor.style.background = 'linear-gradient(to bottom, #2b282877 0%, #2b282877 80%, white 80%, white 100%)'
     
     let cod = ""
     let puntero = 0; 
@@ -29,9 +26,9 @@ function ActualizarMostrario2(idSeccion){
 
 
     //inicio de creacion de div que se sobrepone para usar flechas y botones 
-                                                         // relativo
+                                                         // relativo       gradiante
     cod += ` 
-        <div style="background: #008a8a" class="contenedor1  sombra padding1 gradiante">                                                                                                       
+        <div class="contenedor1  sombra padding1 color1 ">                                                                                                       
             
         `
 
@@ -116,12 +113,7 @@ function ActualizarMostrario2(idSeccion){
     }
 
     arre = arrePaso 
-    arreCodigoSecciones[IdSeccion] = cod
     arrePadre[IdSeccion] = arre
-    /*console.log("arrePadre[IdSeccion]");
-    console.log(arrePadre[IdSeccion]); 
-    console.log("arreCodigoSecciones[IdSeccion]");
-    console.log(arreCodigoSecciones[IdSeccion]);*/ 
     contenedor.innerHTML = cod;
 }
 
@@ -164,13 +156,7 @@ function pelota(ref, acc, idSec){
         arrePaso.push(arrePadre[IdSec][i])
     }
 
-    /*console.log(idSec);
-    console.log(arrePadre[idSec]);
-    console.log(arrePaso);*/
-
     arrePadre[IdSec] = arrePaso;
-    console.log("abajo")
-    console.log(arrePadre[IdSec])
     ActualizarMostrario2(IdSec)     
 }
 
