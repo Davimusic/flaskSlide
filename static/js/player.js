@@ -1,4 +1,4 @@
-let audioEnUso = false
+let audioEnUso = false, audioPausado = false;
 let punteroAudio, punteroBarraDeAudio;
 //let idSeccionesAu
 let arreAudiosPadre =   [[['https://res.cloudinary.com/dplncudbq/video/upload/v1658158699/mias/26mesclaLista_kf3qai.wav','https://res.cloudinary.com/dplncudbq/image/upload/v1658015902/mias/i1_ndc8ga.png', 'titulo', 'chachara.....'],
@@ -22,7 +22,7 @@ function usarReproductorAudio(idSeccion){
 
     cod += `
     <div  class="padding1" >
-        <div class="padding1 color1 sombra">
+        <div class="borde2 padding1 color1 sombra">
     `
 
     for (let i = 0; i < arreAudios.length; i++) {
@@ -48,9 +48,9 @@ function usarReproductorAudio(idSeccion){
         } 
 
         cod += `
-            <img style="width:50px" onclick="playAudio(${IdseccionAudioPlayer})" src="../static/images/play.png" alt="seo">
-            <img style="width:50px" onclick="pauseAudio(${IdseccionAudioPlayer})" src="../static/images/pause.png" alt="seo">
-            <img style="width:50px" onclick="stopAudio(${IdseccionAudioPlayer})" src="../static/images/stop.png" alt="seo">
+            <img style="width:50px" onclick="playAudio()" src="../static/images/play.png" alt="seo">
+            <img style="width:50px" onclick="pauseAudio('pausar')" src="../static/images/pause.png" alt="seo">
+            <img style="width:50px" onclick="stopAudio()" src="../static/images/stop.png" alt="seo">
             <input class="rangeLimpio fondoTransparente" type="range" onchange="actualizarUbicacionAudio(this.value)" id="${IdseccionAudioPlayer}barraDeReproductorAudio" value="0" max=""/>
         </div>
     </div>
@@ -92,8 +92,14 @@ function playAudio() {
             alert("no hay audios cargados!!!")
         }
     } else {
-        stopAudio()
-        setTimeout(reiniciarInputRange, 1000)
+        if(audioPausado == false){
+            stopAudio()
+            setTimeout(reiniciarInputRange, 1100)
+        } else {
+            audioEnUso = false
+            reiniciarInputRange()
+        }
+        
     }
     
 } 
@@ -105,6 +111,7 @@ function reiniciarInputRange(){
 }
 
 function pauseAudio() { 
+    audioPausado = true;
     punteroAudio.pause(); 
     audioEnUso = false;
 } 
@@ -122,7 +129,8 @@ function actualizarUbicacionAudio(acc){
 function cronometro(){
     if(audioEnUso == true){
         console.log("uso");
-        punteroBarraDeAudio.value = parseInt(punteroBarraDeAudio.value) + 0.5
-        setTimeout(cronometro, 500)
+        punteroBarraDeAudio.value = parseFloat(punteroBarraDeAudio.value) + 1
+        console.log(punteroBarraDeAudio.value);
+        setTimeout(cronometro, 1000)
     }
 }

@@ -1,5 +1,17 @@
 html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font-family: 'Playfair Display', serif !important; }
 
+p{
+  margin: 0;
+}
+
+.centrar{
+  text-align: center;
+}
+
+body{
+  background-color: #ffffff;
+}
+
 .fondoTransparente{
   background: #00000065;
 }
@@ -86,6 +98,10 @@ html * { font-size:medium !important; color: rgb(255, 255, 255) !important; font
 
 .borde1{
   border-radius:50%;
+}
+
+.borde2{
+  border-radius: 0.5em;
 }
 
 .espacioEquilatero{

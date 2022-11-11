@@ -28,7 +28,7 @@ function ActualizarMostrario2(idSeccion){
     //inicio de creacion de div que se sobrepone para usar flechas y botones 
                                                          // relativo       gradiante
     cod += ` 
-        <div class="contenedor1  sombra padding1 color1 ">                                                                                                       
+        <div class="borde2 contenedor1  sombra padding1 color1 ">                                                                                                       
             
         `
 
@@ -48,7 +48,7 @@ function ActualizarMostrario2(idSeccion){
                 if(i < puntero ){
                     cod += `
                             <div class="slide">
-                                <img id="${IdSeccion}imgSlide${i}" onmouseout="decrecer('${IdSeccion}imgSlide${i}', '${alturaPantalla/3.5}')" onmouseover="crecer('${IdSeccion}imgSlide${i}', '${alturaPantalla/3.5}')" class="borde1 mano" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
+                                <img id="${IdSeccion}imgSlide${i}" onmouseout="desrotar('${IdSeccion}imgSlide${i}', '${alturaPantalla/3.5}')" onmouseover="rotar('${IdSeccion}imgSlide${i}', '${alturaPantalla/3.5}')" class="borde1 mano" style="height: ${alturaPantalla/3.5}px ;" src="../static/images/${arre[i][0]}" alt="">
                                 <div class="" style = "background: ;">${arre[i][1]} </div>
                             </div>
                     ` 
@@ -69,8 +69,8 @@ function ActualizarMostrario2(idSeccion){
             `
             <div>
                 <div class="flex espacioEquilatero paddingSuperiorInferior contenedorGaleria">
-                    <img class='mano' style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('1','flecha','${IdSeccion}')" src="../static/images/adelante.png" alt="" >
-                    <img class='mano' style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('-1', 'flecha','${IdSeccion}')" src="../static/images/atras.png" alt=""  >
+                    <img class='mano' style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('1','flecha','${IdSeccion}', 'descativarMostrario')" src="../static/images/adelante.png" alt="" >
+                    <img class='mano' style="height: 30px; width: 30px; padding-right: 10px;  padding-left: 10px;" onclick="pelota('-1', 'flecha','${IdSeccion}', 'descativarMostrario')" src="../static/images/atras.png" alt=""  >
                 
         `
         //calculo la cantidad de imagenes disponibles
@@ -84,7 +84,7 @@ function ActualizarMostrario2(idSeccion){
             }
             cod += 
                     `
-                    <img class='mano' onclick="pelota(${i}, 'pelota','${IdSeccion}')" style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/${decision}" alt="" >
+                    <img class='mano' onclick="pelota(${i}, 'pelota','${IdSeccion}', 'descativarMostrario')" style="height: 20px; width: 20px;  padding-right: 10px;  padding-left: 10px;" src="../static/images/${decision}" alt="" >
                     `
         }
 
@@ -115,11 +115,18 @@ function ActualizarMostrario2(idSeccion){
     arre = arrePaso 
     arrePadre[IdSeccion] = arre
     contenedor.innerHTML = cod;
+
+
 }
 
 let idActual = 0
-function pelota(ref, acc, idSec){
+let usoActivoMostrario = true
+function pelota(ref, acc, idSec, usoMostrario){
     let IdSec = parseInt(idSec)
+    if(usoMostrario == "descativarMostrario"){
+        usoActivoMostrario = false // este variable me desactiva el cambio automatico del mostrario
+    }
+    
     if(acc == "pelota"){
         idActual = ref
     } else if(acc == "flecha"){
@@ -159,6 +166,22 @@ function pelota(ref, acc, idSec){
     arrePadre[IdSec] = arrePaso;
     ActualizarMostrario2(IdSec)     
 }
+
+function avanzarMostrarioAutomatico(){
+    let cantidadComponentes = 2;//debe ser dinamico a futuro
+    if(usoActivoMostrario == true){
+        console.log("i");
+        pelota('1','flecha', '0')
+        pelota('1','flecha', '1')
+        setTimeout(avanzarMostrarioAutomatico, 7000)
+    } else {
+        console.log("usoActivoPasoMostrario desactivado");
+    }
+    
+    
+}
+
+
 
 window.onpageshow = function(event){
     //parece no servir, no se està usando
