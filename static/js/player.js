@@ -51,7 +51,7 @@ function usarReproductorAudio(idSeccion){
             <img style="width:50px" onclick="playAudio()" src="../static/images/play.png" alt="seo">
             <img style="width:50px" onclick="pauseAudio('pausar')" src="../static/images/pause.png" alt="seo">
             <img style="width:50px" onclick="stopAudio()" src="../static/images/stop.png" alt="seo">
-            <input class="rangeLimpio fondoTransparente" type="range" onchange="actualizarUbicacionAudio(this.value)" id="${IdseccionAudioPlayer}barraDeReproductorAudio" value="0" max=""/>
+            <input class="rangeLimpio fondoTransparente" type="range" onchange="actualizarUbicacionAudio(this.value)" id="${IdseccionAudioPlayer}barraDeReproductorAudio" value="0" max="0"/>
         </div>
     </div>
     `

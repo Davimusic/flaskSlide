@@ -73,14 +73,14 @@ function traducirDiccionario(){
         "link": ["https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png"],
         "style": ["height: 100px;", "background: linear-gradient(rgba(43, 40, 40, 0.467) 0%, rgba(43, 40, 40, 0.467) 80%, white 80%, white 100%);"],
         "class": ["borde1", "color2"],
-        "eventos": [`onclick="saludar('desde la imagen baby!!!')"`, "evento2"],
+        "eventos": [`onclick="saludar('desde la imagen baby!!!')"`,  ``],
         "id": [`img1`],
-        "animacion": [`onmouseover = "rotar(' img1')"`, `onmouseout = "desrotar(' img1')"`]//pilas con el id, se le agrega un espacio de mas
+        "animacion": [`onmouseover = "rotar(' img1')"`, `onmouseout = "desrotar(' img1')"`, `"`]//pilas con el id, se le agrega un espacio de mas
         },
     "div": {
             "class2": ["centrar", "padding1", "clase3"],
             "id2": ["id1"], 
-            "eventos": [`onclick="saludar('desde el div')"`, "evento2"],
+            "eventos": [`onclick="saludar('desde el div')" `, "evento2"],
             "style2": [""] 
         }         
         } 
@@ -121,12 +121,37 @@ function traducirDiccionario(){
         }
     }
 
+    codigoInyectable += `
+    <div class="flex">
+        <div class="color1 centrar" style=" width: 200px; height: 50px;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src=" https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+        </div>
+
+        <div class="color2 centrar" style=" width: 200px; height: 50px;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    `
+
     document.getElementById("testeo").innerHTML = codigoInyectable;
     
     //console.log(arreDic);
 }
 
+function drop(ev){
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+    console.log("drop");
+}
 
+function allowDrop(ev){
+    ev.preventDefault();
+    console.log("allowDrop");
+}
+
+function drag(ev){
+    ev.dataTransfer.setData("text", ev.target.id);
+    console.log("drag");
+}
 
 function saludar(text){
     console.log(`Oe bro!!! \n ${text}`)
