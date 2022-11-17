@@ -170,7 +170,7 @@ function pelota(ref, acc, idSec, usoMostrario){
 function avanzarMostrarioAutomatico(){
     let cantidadComponentes = 2;//debe ser dinamico a futuro
     if(usoActivoMostrario == true){
-        console.log("i");
+        //console.log("i");
         pelota('1','flecha', '0')
         pelota('1','flecha', '1')
         setTimeout(avanzarMostrarioAutomatico, 7000)

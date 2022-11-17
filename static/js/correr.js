@@ -55,9 +55,6 @@ function correr(){
     avanzarMostrarioAutomatico()
 }
 
-
-
-
 /*let palabra = "div"
 let nuevaLlave = "otro", nuevoValor = ["otro1", "otro2", "otro3"]
 
@@ -66,93 +63,66 @@ miArre[palabra][nuevaLlave] = nuevoValor
 console.log(miArre[palabra]);*/
 
 function traducirDiccionario(){
-    let numPadre = 0, numHijo = 0;
+    let numHijo = 0;
     let arreDic = []
     let codigoInyectable = ""
-    let diccionario =  {"img": {
-        "link": ["https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png"],
-        "style": ["height: 100px;", "background: linear-gradient(rgba(43, 40, 40, 0.467) 0%, rgba(43, 40, 40, 0.467) 80%, white 80%, white 100%);"],
-        "class": ["borde1", "color2"],
-        "eventos": [`onclick="saludar('desde la imagen baby!!!')"`,  ``],
-        "id": [`img1`],
-        "animacion": [`onmouseover = "rotar(' img1')"`, `onmouseout = "desrotar(' img1')"`, `"`]//pilas con el id, se le agrega un espacio de mas
-        },
-    "div": {
-            "class2": ["centrar", "padding1", "clase3"],
-            "id2": ["id1"], 
-            "eventos": [`onclick="saludar('desde el div')" `, "evento2"],
-            "style2": [""] 
-        }         
-        } 
-    for (llavePrincipal in diccionario) {
-        arreDic.push([])
-        //console.log(`llave principal: ${llavePrincipal} \n\n\n`); //muestra el nombre de las llaves principales
-        
-        for (llaveHija in diccionario[llavePrincipal]) {
+    let diccionario =  [
+                            {"img": {
+                                "link": ["https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png"],
+                                "style": ["height: 100px;", "background: linear-gradient(rgba(43, 40, 40, 0.467) 0%, rgba(43, 40, 40, 0.467) 80%, white 80%, white 100%);"],
+                                "class": ["borde1", "color2"],
+                                "eventos": [`onclick="saludar('desde la imagen baby!!!')"`,  ``],
+                                "id": [`img1`],
+                                "animacion": [`onmouseover = "rotar(' img1')"`, `onmouseout = "desrotar(' img1')"`, `"`]//pilas con el id, se le agrega un espacio de mas
+                            }},
+                            {"div": {
+                                    "class2": ["centrar", "padding1", "clase3"],
+                                    "id": ["id1"], 
+                                    "eventos": [`onclick="saludar('desde el div')" `, "evento2"],
+                                    "style2": [""],
+                                    "animacion": [``] 
+                            }},
+                            {"div": {
+                                "class2": ["centrar", "color1", "padding1", "borde1"],
+                                "id": ["id2"], 
+                                "eventos": [`onclick="saludar('desde el divMAsGrande')" `, "evento2"],
+                                "style2": [""],
+                                "animacion": [`onmouseover = "crecer(' id2', '120')"`, `onmouseout = "decrecer(' id2', '120')"`]  
+                            }}
+                        ]
 
-            //console.log(`llave hija: ${llaveHija} \n\n`); //muestra el nombre de cada llave interna
-            //console.log(diccionario[arreDic][llaveHija]); muestra el contenido de cada llave hija
-            arreDic[numPadre].push([])
-
-            for (let u = 0; u < diccionario[llavePrincipal][llaveHija].length; u++) {
-                //console.log(`contenido final: ${diccionario[llavePrincipal][llaveHija][u]}` ); 
-                //console.log(arreDic);  
-                //console.log(`${numPadre} ${numHijo}`);
-                arreDic[numPadre][numHijo].push(diccionario[llavePrincipal][llaveHija][u])    
+    for (let u = 0; u < diccionario.length; u++) {
+        arreDic = []
+        for (llavePrincipal in diccionario[u]) {
+            arreDic.push([])
+            for (llaveHija in diccionario[u][llavePrincipal]) {
+                arreDic[0].push([])
+                for (let i = 0; i < diccionario[u][llavePrincipal][llaveHija].length; i++) {
+                    arreDic[0][numHijo].push(diccionario[u][llavePrincipal][llaveHija][i])    
+                }
+                numHijo += 1;
             }
-            numHijo += 1;
-            //console.log(`\n\n`);
-        }
-        
-        numPadre += 1;
-        numHijo = 0;
-
-        if(llavePrincipal == "img"){
-            codigoInyectable += imagen(arreDic[0][0], arreDic[0][1], arreDic[0][2], arreDic[0][3], arreDic[0][4], arreDic[0][5])
-            //console.log(codigoInyectable);
-        } 
-        if(llavePrincipal == "div"){
-            let clase = `class = "${descomponerArreglo(arreDic[1][0])}"`
-            let id = `id = "${descomponerArreglo(arreDic[1][1])}"` 
-            let eventos =  `${descomponerArreglo(arreDic[1][2])}` 
-            let style = `style = "${descomponerArreglo(arreDic[1][3])}"`
-            let concatenado = `${id} ${clase} ${eventos} ${style}`
-            codigoInyectable = div(concatenado, codigoInyectable)
+            numHijo = 0;
+            if(llavePrincipal == "img"){
+                codigoInyectable += imagen(arreDic[0][0], arreDic[0][1], arreDic[0][2], arreDic[0][3], arreDic[0][4], arreDic[0][5])
+            } 
+            if(llavePrincipal == "div"){
+                let clase = `class = "${descomponerArreglo(arreDic[0][0])}"`
+                let id = `id = "${descomponerArreglo(arreDic[0][1])}"` 
+                let eventos =  `${descomponerArreglo(arreDic[0][2])}` 
+                let style = `style = "${descomponerArreglo(arreDic[0][3])}"`
+                let animation = `${descomponerArreglo(arreDic[0][4])}`
+                let concatenado = `${id} ${clase} ${eventos} ${style} ${animation}`
+                codigoInyectable = div(concatenado, codigoInyectable)
+            }
         }
     }
 
-    codigoInyectable += `
-    <div class="flex">
-        <div class="color1 centrar" style=" width: 200px; height: 50px;" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src=" https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
-        </div>
-
-        <div class="color2 centrar" style=" width: 200px; height: 50px;" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    </div>
-    `
-
-    document.getElementById("testeo").innerHTML = codigoInyectable;
-    
-    //console.log(arreDic);
 }
 
-function drop(ev){
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-    console.log("drop");
-}
-
-function allowDrop(ev){
-    ev.preventDefault();
-    console.log("allowDrop");
-}
-
-function drag(ev){
-    ev.dataTransfer.setData("text", ev.target.id);
-    console.log("drag");
-}
 
 function saludar(text){
     console.log(`Oe bro!!! \n ${text}`)
 }
+
+

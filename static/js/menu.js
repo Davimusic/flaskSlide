@@ -2,7 +2,9 @@ let arr = [['imagen', 'https://res.cloudinary.com/dplncudbq/image/upload/v165801
 
 function menu(){
     let menuID = document.getElementById("menu");
-
+    let divPadre = document.getElementById("general")
+    divPadre.style.height = `${(window.innerHeight / 100)*50}px`
+    divPadre.style.overflowY = "scroll";
     let anchoPantalla = window.innerWidth; 
     let cod = "", display = "", anchoAUsar = "", clasEsconder = "", eventoMenuCelular = "";
     let alturaMenu = 30;
@@ -43,6 +45,7 @@ function menu(){
 let bandera = 0
 function menuCelular(){
     let menu = document.getElementById("menuDesplegable")
+
     menu.style.transition = "0.5s";
     if(bandera  == 0 ){
         bandera = 1

@@ -43,7 +43,7 @@ function div(atributos, info){
 }
 
 function imagen(link, style, clas, events, id, animation){
-    console.log(style);
+    //console.log(style);
     let cod = `
     <img id="${descomponerArreglo(id)}" ${descomponerArreglo(animation)} src="${descomponerArreglo(link)}" style="${descomponerArreglo(style)}" class="${descomponerArreglo(clas)}" ${descomponerArreglo(events)} alt="">
     `
