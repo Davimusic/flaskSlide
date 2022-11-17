@@ -1,9 +1,9 @@
 let arr = [['imagen', 'https://res.cloudinary.com/dplncudbq/image/upload/v1658015902/mias/i1_ndc8ga.png'],['#home', 'Home'],['#home2', 'Home2'], ['#home3', 'Home3'], ['#home4', 'Home4'], ['#home', 'Home'],['#home2', 'Home2'],['', '']]
 
 function menu(){
-    let menuID = document.getElementById("menu");
+    //let menuID = document.getElementById("menu");
     let divPadre = document.getElementById("padre")
-    divPadre.style.height = `${(window.innerHeight / 100)*60}px`
+    divPadre.style.height = `${window.innerHeight}px`
     divPadre.style.overflow = "scroll";
     //divPadre.style.background = "red"
     let anchoPantalla = window.innerWidth; 
@@ -21,7 +21,7 @@ function menu(){
     
     cod += 
     `
-    <div id="menuDesplegable" class="color1 contenedorGaleria" ${anchoAUsar}>
+    <div id="menuDesplegable"  class="sticky color1 contenedorGaleria" ${anchoAUsar}>
         <ul class="${display} espacioEquilatero ListaLimpia">
     `
         for (let i = 0; i < arr.length; i++) {
@@ -40,7 +40,9 @@ function menu(){
         </ul>
     </div>
     `
-    menuID.innerHTML = cod;
+    return cod;
+    //console.log(cod);
+    //menuID.innerHTML = cod;
 }
 
 let bandera = 0

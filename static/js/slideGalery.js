@@ -115,8 +115,6 @@ function ActualizarMostrario2(idSeccion){
     arre = arrePaso 
     arrePadre[IdSeccion] = arre
     contenedor.innerHTML = cod;
-
-
 }
 
 let idActual = 0

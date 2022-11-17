@@ -2,14 +2,19 @@ function correr(){
     let cod = ""
     let padre = document.getElementById("padre")
 
-    padre.innerHTML = `
+    /*padre.innerHTML = `
         <div id="menu" class="sticky"></div>
         <div id="contenedorPadreSlides" class="padding1"></div> 
         <div id="audioPlayer" class=""></div> 
-    `
-    menu()
+    `*/
+    cod += menu()
+    cod += `<div id="contenedorAudioPlayer${0}" class=""></div>`
+    cod += `<div id="contenedor${0}" class="padding1"></div>`
+    cod += `<div id="contenedorAudioPlayer${1}" class=""></div>`
+    cod += `<div id="contenedor${1}" class="padding1"></div>`
 
-    for (let i = 0; i < 2; i++){
+    
+    /* for (let i = 0; i < 2; i++){
         cod += `
         <div id="contenedorAudioPlayer${i}" class=""></div>
         `
@@ -20,13 +25,9 @@ function correr(){
         cod += `
         <div id="contenedor${i}" class="padding1"></div>
         `
-    }
+    }*/
 
-    slides.innerHTML = cod
-    ActualizarMostrario2(0)
-    ActualizarMostrario2(1)
-    usarReproductorAudio(0)
-    usarReproductorAudio(1)
+    //slides.innerHTML = cod
 
     let mirar = [texto('H1', 'Titulo'), texto("p","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt ducimus voluptatem recusandae adipisci at. Aliquam, sit vel. Placeat laudantium magnam corrupti debitis facere accusamus libero fugit autem laborum saepe explicabo nemo dolorem tenetur, ut eos eaque labore nesciunt nulla, aut quam. Officia reiciendis aut accusamus, fugiat accusantium nisi asperiores unde?"), espacio(1), div(`class="flex"`, `${texto('p', 'textooooooooooooooooooooooo')} ${negrita('la madre en negrita')}`)]
     let textoDePrueba = 'texto("p","desde string")'
@@ -48,8 +49,13 @@ function correr(){
     </div>
     `
 
-    document.getElementById("general").innerHTML = cod2
+    padre.innerHTML = cod + cod2
 
+
+    ActualizarMostrario2(0)
+    ActualizarMostrario2(1)
+    usarReproductorAudio(0)
+    usarReproductorAudio(1)
 
     traducirDiccionario()//en testeo aùn
     avanzarMostrarioAutomatico()
@@ -119,7 +125,6 @@ function traducirDiccionario(){
     }
 
 }
-
 
 function saludar(text){
     console.log(`Oe bro!!! \n ${text}`)
