@@ -2,9 +2,10 @@ let arr = [['imagen', 'https://res.cloudinary.com/dplncudbq/image/upload/v165801
 
 function menu(){
     let menuID = document.getElementById("menu");
-    let divPadre = document.getElementById("general")
-    divPadre.style.height = `${(window.innerHeight / 100)*100}px`
-    divPadre.style.overflowY = "scroll";
+    let divPadre = document.getElementById("padre")
+    divPadre.style.height = `${(window.innerHeight / 100)*60}px`
+    divPadre.style.overflow = "scroll";
+    //divPadre.style.background = "red"
     let anchoPantalla = window.innerWidth; 
     let cod = "", display = "", anchoAUsar = "", clasEsconder = "", eventoMenuCelular = "";
     let alturaMenu = 30;
