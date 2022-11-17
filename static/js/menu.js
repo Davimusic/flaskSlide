@@ -21,7 +21,7 @@ function menu(){
     
     cod += 
     `
-    <div id="menuDesplegable"  class="sticky color1 contenedorGaleria" ${anchoAUsar}>
+    <div id="menuDesplegable"  class="sticky sobresalir color1 contenedorGaleria" ${anchoAUsar}>
         <ul class="${display} espacioEquilatero ListaLimpia">
     `
         for (let i = 0; i < arr.length; i++) {

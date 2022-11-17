@@ -1,6 +1,8 @@
 let audioEnUso = false, audioPausado = false;
 let punteroAudio, punteroBarraDeAudio;
-//let idSeccionesAu
+let arreAudios = []
+let IdseccionAudioPlayer = 0, cantidadComponentesAudios = 0
+
 let arreAudiosPadre =   [[['https://res.cloudinary.com/dplncudbq/video/upload/v1658158699/mias/26mesclaLista_kf3qai.wav','https://res.cloudinary.com/dplncudbq/image/upload/v1658015902/mias/i1_ndc8ga.png', 'titulo', 'chachara.....'],
                     ['https://res.cloudinary.com/dplncudbq/video/upload/v1657579441/mias/m1_s2epfa.mp3','https://res.cloudinary.com/dplncudbq/image/upload/v1657473822/mias/red-304573_xrlhrp.png', 'titulo2', 'chachara2.....'],
                     ['https://res.cloudinary.com/dplncudbq/video/upload/v1657299118/mias/m2_koysag.mp3','https://res.cloudinary.com/dplncudbq/image/upload/v1657297550/mias/logoGenerico_dotmc8.png', 'titulo3', 'chachara3.....'],
@@ -10,11 +12,10 @@ let arreAudiosPadre =   [[['https://res.cloudinary.com/dplncudbq/video/upload/v1
                     ['https://res.cloudinary.com/dplncudbq/video/upload/v1656010089/mias/voces_os7tgw.wav','https://res.cloudinary.com/dplncudbq/image/upload/v1657987574/mias/f11_fcmy9f.png', 'titulo3', 'chachara3.....'],
                     ]] 
 
-let IdseccionAudioPlayer = 0           
 
 
 function usarReproductorAudio(idSeccion){
-    let arreAudios = []
+    arreAudios = []
     IdseccionAudioPlayer = idSeccion
     let audioPlayer = document.getElementById(`contenedorAudioPlayer${IdseccionAudioPlayer}`)
     arreAudios = arreAudiosPadre[IdseccionAudioPlayer]
@@ -48,14 +49,14 @@ function usarReproductorAudio(idSeccion){
         } 
 
         cod += `
-            <img style="width:50px" onclick="playAudio()" src="../static/images/play.png" alt="seo">
+            <img style="width:50px" onclick="playAudio(${cantidadComponentesAudios})" src="../static/images/play.png" alt="seo">
             <img style="width:50px" onclick="pauseAudio('pausar')" src="../static/images/pause.png" alt="seo">
             <img style="width:50px" onclick="stopAudio()" src="../static/images/stop.png" alt="seo">
             <input class="rangeLimpio fondoTransparente" type="range" onchange="actualizarUbicacionAudio(this.value)" id="${IdseccionAudioPlayer}barraDeReproductorAudio" value="0" max="0"/>
         </div>
     </div>
     `
-
+    cantidadComponentesAudios += 1
     audioPlayer.innerHTML = cod;
 }
 
@@ -84,10 +85,10 @@ function seleccionarAudio(id, idSeccionAUsar){
     playAudio()
 }
 
-function playAudio() { 
+function playAudio(id) { 
     if(punteroAudio == undefined){
         if(arreAudios.length != 0){
-            seleccionarAudio(`componente${IdseccionAudioPlayer}div_miAudio${0}`)
+            seleccionarAudio(`componente${id}div_miAudio${0}`, id)
         } else {
             alert("no hay audios cargados!!!")
         }
@@ -97,7 +98,7 @@ function playAudio() {
             setTimeout(reiniciarInputRange, 1100)
         } else {
             audioEnUso = false
-            reiniciarInputRange()
+            setTimeout(reiniciarInputRange, 1100)
         }
         
     }
@@ -128,7 +129,7 @@ function actualizarUbicacionAudio(acc){
 
 function cronometro(){
     if(audioEnUso == true){
-        console.log("uso");
+        
         punteroBarraDeAudio.value = parseFloat(punteroBarraDeAudio.value) + 1
         console.log(punteroBarraDeAudio.value);
         setTimeout(cronometro, 1000)

@@ -43,7 +43,9 @@ body{
   cursor: pointer;
 }
 
-
+.sobresalir{
+  z-index: 1000;
+}
 
 
 .mano{
