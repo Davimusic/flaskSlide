@@ -63,6 +63,15 @@ function traducirDiccionario(){
                                 "id": [`img1`],
                                 "animacion": [`onmouseover = "rotar(' img1')"`, `onmouseout = "desrotar(' img1')"`, `"`]//pilas con el id, se le agrega un espacio de mas
                             }},
+                            {"text": {
+                                "texto": ["esto es un texto ..... esto es un texto ..... esto es un texto ..... esto es un texto ..... esto es un texto ..... esto es un texto ..... esto es un texto ....."],
+                                "style": ["", ""],
+                                "class": ["borde2", "sombra", "color1"],
+                                "eventos": [`onclick="saludar('desde el texto baby!!!')"`,  ``],
+                                "id": [`texto1`],
+                                "animacion": [`onmouseover = "rotar(' texto1')"`, `onmouseout = "desrotar(' texto1')"`, ``],//pilas con el id, se le agrega un espacio de mas
+                                "tipo": [`h1`]
+                            }},
                             {"div": {
                                     "class2": ["centrar", "padding1", "clase3"],
                                     "id": ["id1"], 
@@ -75,7 +84,7 @@ function traducirDiccionario(){
                                 "id": ["id2"], 
                                 "eventos": [`onclick="saludar('desde el divMAsGrande')" `, "evento2"],
                                 "style2": [""],
-                                "animacion": [`onmouseover = "crecer(' id2', '120')"`, `onmouseout = "decrecer(' id2', '120')"`]  
+                                "animacion": [``, ``]  
                             }}
                         ]
 
@@ -91,6 +100,19 @@ function traducirDiccionario(){
                 numHijo += 1;
             }
             numHijo = 0;
+
+            if(llavePrincipal == "text"){
+                let textoPaso = `${descomponerArreglo(arreDic[0][0])}`
+                let style = `style = "${descomponerArreglo(arreDic[0][1])}"`
+                let clase = `class = "${descomponerArreglo(arreDic[0][2])}"`
+                let eventos =  `${descomponerArreglo(arreDic[0][3])}` 
+                let id = `id = "${descomponerArreglo(arreDic[0][4])}"` 
+                let animation = `${descomponerArreglo(arreDic[0][5])}`
+                let tipo = `${descomponerArreglo(arreDic[0][6])}`
+                let concatenado = `${style} ${clase} ${eventos} ${id} ${animation}`
+                console.log(`${texto(tipo, concatenado, textoPaso)}`);
+                codigoInyectable += texto(tipo, concatenado, textoPaso)
+            }
             if(llavePrincipal == "img"){
                 codigoInyectable += imagen(arreDic[0][0], arreDic[0][1], arreDic[0][2], arreDic[0][3], arreDic[0][4], arreDic[0][5])
             } 

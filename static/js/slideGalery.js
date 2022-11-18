@@ -7,7 +7,7 @@ let IdSeccion = 0;
 
 let alturaPantalla = window.innerHeight; //screen.height;
 let anchoPantalla = window.innerWidth; //screen.width;
-let anchoPantallaDisponible = (anchoPantalla / 100) * 95; // le restamos 4% de los 2% padding, tambièn le doy un pequeño matgen de error
+let anchoPantallaDisponible = (anchoPantalla / 100) * 95; // le restamos 4% de los 2% padding, tambièn le doy un pequeño margen de error
 let primeraReferencia = alturaPantalla/3.5
 
 function ActualizarMostrario2(idSeccion){

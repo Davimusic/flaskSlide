@@ -1,8 +1,8 @@
-function texto(acc, text){
+function texto(tipo, acc, text){
     let cod = `
-        <${acc}>
+        <${quitarEspacioInicial(tipo)} ${acc}>
             ${text}
-        </${acc}>
+        </${quitarEspacioInicial(tipo)}>
     `
     return cod;
 }
@@ -50,10 +50,14 @@ function imagen(link, style, clas, events, id, animation){
     return cod;
 }
 
+function quitarEspacioInicial(text){
+    return text.slice(1)
+}
+
 function descomponerArreglo(arr){
     let text = ""
     for (let u = 0; u < arr.length; u++) {
-        text += ` ${arr[u]}`
+        text += ` ${arr[u]}`   
     }
     return text;
 }
