@@ -29,6 +29,7 @@ function correr(){
     `
 
     cod += traducirDiccionario()//en testeo aùn
+
     padre.innerHTML = cod + cod2
 
 

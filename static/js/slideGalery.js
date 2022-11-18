@@ -17,7 +17,7 @@ function ActualizarMostrario2(idSeccion){
 
     //contenedor.style.height = `${alturaPantalla/3}px`
     //contenedor.style.background = "#2b2828"
-    contenedor.style.background = 'linear-gradient(to bottom, #2b282877 0%, #2b282877 80%, white 80%, white 100%)'
+    //contenedor.style.background = 'linear-gradient(to bottom, #2b282877 0%, #2b282877 80%, white 80%, white 100%)'
     
     let cod = ""
     let puntero = 0; 
@@ -117,28 +117,29 @@ function ActualizarMostrario2(idSeccion){
     contenedor.innerHTML = cod;
 }
 
-let idActual = 0
+let idActual = [0,0] // falta llenar el arreglo de manera dinamico
 let usoActivoMostrario = true
 function pelota(ref, acc, idSec, usoMostrario){
+    //console.log(`idSec: ${idSec} \n\n idActual: ${idActual[idSec]}`);
     let IdSec = parseInt(idSec)
     if(usoMostrario == "descativarMostrario"){
         usoActivoMostrario = false // este variable me desactiva el cambio automatico del mostrario
     }
     
     if(acc == "pelota"){
-        idActual = ref
+        idActual[idSec] = ref
     } else if(acc == "flecha"){
         if(ref == -1){
-            if((idActual + parseInt(ref)) <= -1){
-                idActual = (arrePadre[IdSec].length - 1)
+            if((idActual[idSec] + parseInt(ref)) <= -1){
+                idActual[idSec] = (arrePadre[IdSec].length - 1)
             } else {
-                idActual -= 1
+                idActual[idSec] -= 1
             }
         } else {
-            if((idActual + parseInt(ref)) <= (arrePadre[IdSec].length - 1)){
-                idActual += 1
+            if((idActual[idSec] + parseInt(ref)) <= (arrePadre[IdSec].length - 1)){
+                idActual[idSec] += 1
             } else {
-                idActual = 0
+                idActual[idSec] = 0
             }
         }
     }
@@ -148,7 +149,7 @@ function pelota(ref, acc, idSec, usoMostrario){
     let arrePaso = []
 
     for(let i = 0; i < arrePadre[IdSec].length; i++) {
-        if(idActual == arrePadre[IdSec][i][2]){
+        if(idActual[idSec] == arrePadre[IdSec][i][2]){
             empezar = "si"
         }
         if(empezar == "si"){
@@ -165,18 +166,22 @@ function pelota(ref, acc, idSec, usoMostrario){
     ActualizarMostrario2(IdSec)     
 }
 
+let primeraVezUsoAvanzarMostrarioAutomatico = true
 function avanzarMostrarioAutomatico(){
-    let cantidadComponentes = 2;//debe ser dinamico a futuro
-    if(usoActivoMostrario == true){
-        //console.log("i");
-        pelota('1','flecha', '0')
-        pelota('1','flecha', '1')
+    //let cantidadComponentes = 2;//debe ser dinamico a futuro
+    if(primeraVezUsoAvanzarMostrarioAutomatico == true){
+        primeraVezUsoAvanzarMostrarioAutomatico = false
         setTimeout(avanzarMostrarioAutomatico, 7000)
     } else {
-        console.log("usoActivoPasoMostrario desactivado");
+        if(usoActivoMostrario == true){
+            //console.log("i");
+            pelota('1','flecha', '0')
+            pelota('1','flecha', '1')
+            setTimeout(avanzarMostrarioAutomatico, 7000)
+        } else {
+            console.log("usoActivoPasoMostrario desactivado");
+        } 
     }
-    
-    
 }
 
 
