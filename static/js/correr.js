@@ -30,7 +30,7 @@ function correr(){
 
     cod += traducirDiccionario()//en testeo aùn
 
-    padre.innerHTML = cod + cod2
+    padre.innerHTML = cod + mapa() + cod2 
 
 
 
